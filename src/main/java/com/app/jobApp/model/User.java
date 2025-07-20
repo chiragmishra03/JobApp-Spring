@@ -1,15 +1,7 @@
 package com.app.jobApp.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "users")
 public class User {
@@ -17,7 +9,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "email",nullable = false)
+    @Column(name = "email",nullable = false,unique = true)
     private String email;
 
     @Column(name = "password",nullable = false)
@@ -35,8 +27,85 @@ public class User {
     private Company company;
 
     @Column(name="isAdmin")
-    private Boolean isAdmin;
+    private Boolean isAdmin=false;
 
     @Column(name = "isDeleted")
-    private Boolean isDeleted;
+    private Boolean isDeleted=false;
+
+    public User() {}
+
+    public User(Long id, String email, String password, String role, Applicant applicant, Company company, Boolean isAdmin, Boolean isDeleted) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.applicant = applicant;
+        this.company = company;
+        this.isAdmin = isAdmin;
+        this.isDeleted = isDeleted;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public Applicant getApplicant() {
+        return applicant;
+    }
+
+    public void setApplicant(Applicant applicant) {
+        this.applicant = applicant;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public Boolean getAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        isAdmin = admin;
+    }
+
+    public Boolean getDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        isDeleted = deleted;
+    }
 }
