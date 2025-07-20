@@ -40,5 +40,8 @@
     <logger name="com.app.jobApp.controller.JobPostController" level="DEBUG" additivity="false">
         <appender-ref ref="JOBPOST_FILE"/>
     </logger>
+    <logger name="com.app.jobApp.controller.UserController" level="DEBUG" additivity="false">
+        <appender-ref ref="USER_FILE"/>
+    </logger>
 
 </configuration>
